@@ -1,0 +1,4 @@
+vertexlitgeneric
+{
+	$basetexture "models/anim_flag_skins/flag_structure"
+}

@@ -1,8 +1,8 @@
-$modelname "anim_flags/anim_flag.mdl"
+$modelname "anim_flag_rework/anim_flag_rework.mdl"
 
 $bodygroup "flag"
 {
-	studio "anim_flag.smd"
+	studio "anim_flag_rework.smd"
 }
 
 $surfaceprop "metal"
@@ -13,25 +13,7 @@ $illumposition 1.273 31.202 168.895
 
 $opaque
 
-$cdmaterials "models\flags\"
-
-$texturegroup skinfamilies
-{
-	{ "us", 	  	  }
-	{ "bombass" 	  }
-	{ "deutschland"	  }
-	{ "england"		  }
-	{ "error"		  }
-	{ "german_ww1"	  }
-	{ "gmod"		  }
-	{ "lgbt"		  }
-	{ "russia_ww1"	  }
-	{ "scp"			  }
-	{ "steam"		  }
-	{ "ukraine"		  }
-	{ "urss"		  }
-	{ "vdv"			  }
-}
+$cdmaterials "models\anim_flag_skins\"
 
 $cbox 0 0 0 0 0 0
 
@@ -73,7 +55,7 @@ $sequence "idle" {
 	loop
 }
 
-$collisionmodel "anim_flag_physics.smd"
+$collisionmodel "anim_flag_rework_phys.smd"
 {
 	$mass 1000
 	$inertia 1
