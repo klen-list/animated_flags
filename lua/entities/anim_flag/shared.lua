@@ -1,5 +1,4 @@
--- Created ByPoLaT
--- Remake Wild Russain x Klen_list
+-- Animated Flags Remake by Wild Russain x Klen_list
 
 ENT.Base = "base_anim"
 ENT.PrintName = "Animated Flag"
@@ -16,11 +15,43 @@ if CLIENT then
 	language.Add("anim_flag", "Animated Flag")
 end
 
+do
+	local skinc, mat = 0
+	MsgN"[Animated Flags] Starting material loading..."
+	file.CreateDir"animflag_loadtemp"
+	for i,matfile in ipairs(file.Find("materials/models/anim_flag_skins/*.vtf", "GAME")) do
+		if matfile == "flag_structure.vtf" then continue end -- model material, not flag
+		matfile = matfile:sub(1, #matfile - 4)
+
+		file.Write("animflag_loadtemp/" .. matfile .. ".vmt", Format("vertexlitgeneric{$basetexture \"models/anim_flag_skins/%s\"}", matfile))
+		mat = Material("../data/animflag_loadtemp/" .. matfile)
+
+		if mat:IsError() then
+			MsgN("[Animated Flags] Refused from loading error material `", matfile, "`!")
+			continue
+		end
+
+		skinc = skinc + 1
+		if SERVER then SetGlobalString("animflag_skin" .. skinc, mat:GetName()) end
+
+		MsgN("[Animated Flags] Created material for `", matfile, "`...")
+	end
+	if SERVER then SetGlobalInt("animflag_skincount", skinc) end
+	MsgN("[Animated Flags] Totally loaded ", skinc, " flags.")
+end
+
+hook.Add("ShutDown", "AnimFlagClearDataTemp", function()
+	MsgN"[Animated Flags] Clearing vmt cache..."
+	for i,matfile in ipairs(file.Find("animflag_loadtemp/*.vmt", "DATA")) do
+		file.Delete("animflag_loadtemp/" .. matfile)
+	end
+	file.Delete"animflag_loadtemp"
+end)
+
 properties.Add("flagchangeskin", {
 	MenuLabel = "#flagchangeskin",
 	Order = 999,
 	MenuIcon = "icon16/photos.png",
-
 	Filter = function(self, ent, ply)
 		if not (IsValid(ent) and ent:GetClass() == "anim_flag") then return false end
 		if GetGlobalInt"animflag_skincount" <= 0 then return false end
@@ -61,6 +92,11 @@ properties.Add("flagchangeskin", {
 
 		local _skin = net.ReadUInt(8)
 
-		ent:SetSubMaterial(0, GetGlobalString("animflag_skin" .. (_skin < GetGlobalInt"animflag_skincount" and _skin or GetGlobalInt"animflag_skincount")))
+		if _skin > GetGlobalInt"animflag_skincount" then
+			ply:ChatPrint"[Animated Flags] This flag does not exist on the server!"
+			return
+		end
+
+		ent:SetSubMaterial(0, GetGlobalString("animflag_skin" .. _skin))
 	end
 })
