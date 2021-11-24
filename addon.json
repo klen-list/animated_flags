@@ -1,5 +1,12 @@
 {
 	"title" : "animated flags [remake]",
 	"type" : "model",
-	"tags" : ["roleplay", "realism"]
+	"tags" : ["roleplay", "realism"],
+	"ignore" :
+	[
+		".git/*",
+		"model-src/*",
+		"LICENSE",
+		"README.md"
+	]
 }

@@ -57,7 +57,7 @@ $sequence "idle" {
 
 $collisionmodel "anim_flag_rework_phys.smd"
 {
-	$mass 1000
+	$mass 370
 	$inertia 1
 	$damping 0
 	$rotdamping 0

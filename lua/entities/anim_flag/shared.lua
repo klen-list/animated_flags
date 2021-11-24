@@ -64,9 +64,9 @@ properties.Add("flagchangeskin", {
 
 		local toup, out = true, ""
 		for i = 1,#name do
-			if name:sub(i,i) == "^" then toup = true continue end
-			if toup then out = out .. name:sub(i,i):upper() toup = false continue end
-			out = out .. name:sub(i,i)
+			if name:sub(i, i) == "^" then toup = true continue end
+			if toup then out = out .. name:sub(i, i):upper() toup = false continue end
+			out = out .. name:sub(i, i)
 		end
 
 		return out
@@ -77,6 +77,9 @@ properties.Add("flagchangeskin", {
 			option = submenu:AddOption(self:ParseName(i), function() self:SendSkin(ent, i) end)
 			if ent:GetSubMaterial(0) == GetGlobalString("animflag_skin" .. i) then option:SetChecked(true) end
 		end
+	end,
+	Action = function()
+		-- Nothing, using SendSkin instead
 	end,
 	SendSkin = function(self, ent, id)
 		self:MsgStart()

@@ -18,6 +18,10 @@ function ENT:Initialize()
 	self:ResetSequence(0, false)
 end
 
+function ENT:OnTakeDamage(cdmg)
+	self:TakePhysicsDamage(cdmg)
+end
+
 function ENT:Think()
 	self:NextThink(CurTime())
 	return true
