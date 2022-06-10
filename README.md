@@ -1,7 +1,7 @@
-# Garry's Mod Addon
-# Анимированные флаги [Энтити] [Ремейк]
-Установка:
-1. Скачать архив
-2. Распаковать папку из архива в `Steam\steamapps\common\GarrysMod\garrysmod\addons`
-
-Папка `model-src` содержит исходные файлы модели.
+# Animated Flags [Remake]
+<div>
+<img align="center" alt="Steam Views" src="https://img.shields.io/steam/views/2160259648?logo=steam&style=for-the-badge"/>
+<img align="center" alt="Steam Subscriptions" src="https://img.shields.io/steam/subscriptions/2160259648?logo=steam&style=for-the-badge"/>
+<img align="center" alt="Steam Favorites" src="https://img.shields.io/steam/favorites/2160259648?logo=steam&style=for-the-badge"/>
+<img align="center" alt="Steam Update Date" src="https://img.shields.io/steam/update-date/2160259648?color=blue&label=Last%20update%20date&logo=steam&style=for-the-badge">
+</div>
