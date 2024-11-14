@@ -5,6 +5,7 @@ ENT.PrintName = "Animated Flag"
 ENT.Category = "Animated Flags"
 ENT.Spawnable = true
 ENT.AutomaticFrameAdvance = true
+ENT.PhysicsSounds = true
 
 if CLIENT then
 	if GetConVar"cl_language":GetString() == "russian" or GetConVar"gmod_language":GetString() == "ru" then
