@@ -14,14 +14,16 @@ then
 end
 
 function ENT:Initialize()
-	self:SetModel"models/anim_flag_rework/anim_flag_rework.mdl"
-	if GetGlobalInt"animflag_skincount" > 0 then
-		self:SetSubMaterial(0, GetGlobalString"animflag_skin1")
-	end
+	self:SetModel("models/anim_flag_rework/anim_flag_rework.mdl")
 	self:SetMoveType(MOVETYPE_VPHYSICS)
 	self:PhysicsInit(SOLID_VPHYSICS)
 	self:PhysWake()
-	self:ResetSequence(0, false)
+	self:ResetSequence(0)
+
+	local override = self:GetInternalVariable("m_iszOverrideSubMaterials")
+	if override[1] == '' and GetGlobalInt("animflag_skincount") > 0 then
+		self:SetSubMaterial(0, GetGlobalString("animflag_skin1"))
+	end
 end
 
 ---@param cdmg CTakeDamageInfo
