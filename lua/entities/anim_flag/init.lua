@@ -1,10 +1,16 @@
 -- Animated Flags Remake by Wild Russain x Klen_list
 
-AddCSLuaFile"shared.lua"
-include"shared.lua"
+AddCSLuaFile("shared.lua")
+include("shared.lua")
 
-if CreateConVar("animflag_forceload", "1", {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE}, "Enable/Disable force workshop addon loading."):GetBool() then
-	resource.AddWorkshop"2160259648"
+if CreateConVar(
+		"animflag_forceload",
+		"1",
+		FCVAR_SERVER_CAN_EXECUTE + FCVAR_ARCHIVE,
+		"Enable/Disable force workshop addon loading."
+	):GetBool()
+then
+	resource.AddWorkshop( "2160259648")
 end
 
 function ENT:Initialize()
@@ -18,6 +24,7 @@ function ENT:Initialize()
 	self:ResetSequence(0, false)
 end
 
+---@param cdmg CTakeDamageInfo
 function ENT:OnTakeDamage(cdmg)
 	self:TakePhysicsDamage(cdmg)
 end
